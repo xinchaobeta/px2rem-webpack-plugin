@@ -1,0 +1,29 @@
+/**2w351r5q1rq2ekok**/
+body {
+  width: 1500px;
+  border-radius: 5px;
+}
+
+@media (min-width: 480px) {
+  a {
+    width: 750px;
+  }
+}
+
+@keyframes qyc {
+  from {
+    top: 750px;
+  }
+  to {
+    top: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  @keyframes hello {
+    10% {
+      left: 325px;
+    }
+  }
+}
+/**aiij34jri2rj24iji**/
