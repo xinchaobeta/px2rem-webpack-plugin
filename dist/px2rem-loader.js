@@ -28,14 +28,14 @@ var px2remByRule = function px2remByRule(rule) {
   rule.declarations.forEach(function (declaration) {
     var property = declaration.property;
     var value = declaration.value;
-    var screenWidth = _option2.default.screenWidth;
+    var originScreenWidth = _option2.default.originScreenWidth;
 
     switch (true) {
       case property.startsWith('border'):
         return;
       default:
         declaration.value = value.replace(REGEX, function (whole, px) {
-          return px / screenWidth * 3.2 + 'rem';
+          return px / originScreenWidth * 3.2 + 'rem';
         });
     }
   });

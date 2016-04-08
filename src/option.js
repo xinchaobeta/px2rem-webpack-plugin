@@ -1,3 +1,3 @@
 export default {
-  screenWidth: 750,
+  originScreenWidth: 750,
 }

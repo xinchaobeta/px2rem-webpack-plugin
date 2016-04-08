@@ -15,11 +15,7 @@ module.exports = {
     ],
   },
   plugins: [
-    new htmlWebpackPlugin({
-      template: './index.html',
-      filename: 'index.html',
-      inject: true,
-    }),
-    new px2remWebpackPlugin(),
+    new htmlWebpackPlugin(),
+    new px2remWebpackPlugin({originScreenWidth: 750}),
   ],
 }

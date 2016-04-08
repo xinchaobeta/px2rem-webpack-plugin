@@ -5,13 +5,13 @@ const REGEX = /(\d*?\.?\d+)\s*px\b/g
 const px2remByRule = (rule) => {
   rule.declarations.forEach(declaration => {
     const {property, value} = declaration
-    const {screenWidth} = option
+    const {originScreenWidth} = option
     switch (true) {
       case property.startsWith('border'):
         return;
       default:
         declaration.value = value.replace(REGEX, (whole, px) => {
-          return px/screenWidth*3.2 + 'rem'
+          return px/originScreenWidth*3.2 + 'rem'
         })
     }
   })

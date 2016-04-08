@@ -4,6 +4,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = {
-  screenWidth: 750
+  originScreenWidth: 750
 };
 module.exports = exports['default'];

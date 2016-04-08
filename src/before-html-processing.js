@@ -1,5 +1,3 @@
-import option from './option'
-
 const REGEX_SCRIPT = /(<head>[\s\S]*?)(<script\b[\s\S]*?<\/head>)/
 const REGEX_HEAD = /<\/head>/
 const script = `
