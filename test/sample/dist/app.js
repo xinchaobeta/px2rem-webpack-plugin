@@ -84,7 +84,7 @@
 
 
 	// module
-	exports.push([module.id, "/** 2w351r5q1rq2ekok **/\n\nbody {\n  width: 6.4rem;\n  border-radius: 5px;\n}\n\n@media (min-width: 480px) {\n  a {\n    width: 3.2rem;\n  }\n}\n\n@keyframes qyc {\n  from {\n    top: 3.2rem;\n  }\n\n  to {\n    top: 0;\n  }\n}\n\n@media (max-width: 480px) {\n@keyframes hello {\n    10% {\n      left: 1.3866666666666667rem;\n    }\n}\n}\n\n/** aiij34jri2rj24iji **/", ""]);
+	exports.push([module.id, "/**2w351r5q1rq2ekok**/\n\nbody {\n  width: 6.4rem;\n  border-radius: 5.33px;\n}\n\n@media (min-width: 480px) {\n  a {\n    width: 12.8rem;\n  }\n}\n\n@keyframes qyc {\n  from {\n    top: 3.2rem;\n  }\n\n  to {\n    top: 0;\n  }\n}\n\n@media (max-width: 480px) {\n@keyframes hello {\n    10% {\n      left: 1.3866666666666667rem;\n    }\n}\n}\n\n/**aiij34jri2rj24iji**/", ""]);
 
 	// exports
 

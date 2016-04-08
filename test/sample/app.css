@@ -1,12 +1,12 @@
 /**2w351r5q1rq2ekok**/
 body {
   width: 1500px;
-  border-radius: 5px;
+  border-radius: 5.33px;
 }
 
 @media (min-width: 480px) {
   a {
-    width: 750px;
+    width: 3000px;
   }
 }
 
