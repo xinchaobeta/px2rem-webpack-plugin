@@ -24,7 +24,7 @@ describe('compile ./sample with my plugin', () => {
   })
 
   it('should not compile border-* property', () => {
-    expect(cssSource).toInclude('border-radius: 5.33px;')
+    expect(cssSource).toInclude('border-radius: 5px;')
   })
 
   it('should not compile px in MediaQuery condtion', () => {
