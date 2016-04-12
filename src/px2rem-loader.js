@@ -4,9 +4,10 @@ const REGEX = /(\d*?\.?\d+)\s*px\b/g
 
 const px2remByRule = (rule) => {
   rule.declarations.forEach(declaration => {
-    const {property, value} = declaration
+    const {property, value, type} = declaration
     const {originScreenWidth} = option
     switch (true) {
+      case type === 'comment':
       case property.startsWith('border'):
         return;
       default:

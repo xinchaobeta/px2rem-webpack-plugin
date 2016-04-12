@@ -28,9 +28,11 @@ var px2remByRule = function px2remByRule(rule) {
   rule.declarations.forEach(function (declaration) {
     var property = declaration.property;
     var value = declaration.value;
+    var type = declaration.type;
     var originScreenWidth = _option2.default.originScreenWidth;
 
     switch (true) {
+      case type === 'comment':
       case property.startsWith('border'):
         return;
       default:
