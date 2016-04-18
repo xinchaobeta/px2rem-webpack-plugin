@@ -16,7 +16,6 @@
     "babel-preset-es2015": "^6.0.0",
     "babel-preset-stage-1": "^6.5.0",
     "babel-register": "^6.7.2",
-    "babel-runtime": "^6.6.1",
     "css-loader": "^0.23.1",
     "eslint": "2.2",
     "eslint-plugin-import": "^1.0.3",
@@ -32,7 +31,8 @@
   "license": "ISC",
   "dependencies": {
     "css": "^2.2.1",
-    "lodash": "^4.8.2"
+    "lodash": "^4.8.2",
+    "babel-runtime": "^6.6.1"
   },
   "repository": {
     "type": "git",
