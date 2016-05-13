@@ -5,10 +5,10 @@ const REGEX = /(\d*?\.?\d+)\s*px\b/g
 const px2remByRule = (rule) => {
   rule.declarations.forEach(declaration => {
     const {property, value, type} = declaration
-    const {originScreenWidth} = option
+    const {originScreenWidth, border} = option
     switch (true) {
       case type === 'comment':
-      case property.startsWith('border'):
+      case border === 'preserve' && property.startsWith('border'):
         return;
       default:
         declaration.value = value.replace(REGEX, (whole, px) => {

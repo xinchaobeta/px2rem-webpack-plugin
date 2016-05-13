@@ -30,10 +30,11 @@ var px2remByRule = function px2remByRule(rule) {
     var value = declaration.value;
     var type = declaration.type;
     var originScreenWidth = _option2.default.originScreenWidth;
+    var border = _option2.default.border;
 
     switch (true) {
       case type === 'comment':
-      case property.startsWith('border'):
+      case border === 'preserve' && property.startsWith('border'):
         return;
       default:
         declaration.value = value.replace(REGEX, function (whole, px) {
