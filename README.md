@@ -1,3 +1,5 @@
+[ ![Codeship Status for xinchaobeta/px2rem-webpack-plugin](https://codeship.com/projects/97fa7040-00c2-0134-74ce-4a275b923e46/status?branch=master)](https://codeship.com/projects/153298)
+
 ## Installation
 
 ``` bash
