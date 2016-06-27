@@ -2,15 +2,17 @@ import {findIndex} from 'lodash'
 
 const px2remLoaderFile = require.resolve('./px2rem-loader')
 
-const handleLoaders = (loaders) => {
+const handleLoaders = (resource, loaders) => {
+  debugger
   const idx = findIndex(loaders, path => path.includes('/node_modules/css-loader/'))
-  if(idx === -1) return;
+  const isInNodeModules = resource.includes('/node_modules/')
+  if(idx === -1 || isInNodeModules) return;
   loaders.splice(idx + 1, 0, px2remLoaderFile)
 }
 
 export default (data, next) => {
   try {
-    handleLoaders(data.loaders)
+    handleLoaders(data.resource, data.loaders)
     next(null, data)
   } catch(err) {
     next(err, data)

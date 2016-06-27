@@ -8,17 +8,19 @@ var _lodash = require('lodash');
 
 var px2remLoaderFile = require.resolve('./px2rem-loader');
 
-var handleLoaders = function handleLoaders(loaders) {
+var handleLoaders = function handleLoaders(resource, loaders) {
+  debugger;
   var idx = (0, _lodash.findIndex)(loaders, function (path) {
     return path.includes('/node_modules/css-loader/');
   });
-  if (idx === -1) return;
+  var isInNodeModules = resource.includes('/node_modules/');
+  if (idx === -1 || isInNodeModules) return;
   loaders.splice(idx + 1, 0, px2remLoaderFile);
 };
 
 exports.default = function (data, next) {
   try {
-    handleLoaders(data.loaders);
+    handleLoaders(data.resource, data.loaders);
     next(null, data);
   } catch (err) {
     next(err, data);

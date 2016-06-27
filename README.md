@@ -63,6 +63,8 @@ And translate the `px` to `rem` in all css files, before webpack [css-loader](ht
 > The plugin can also be used together with [sass-loader](https://github.com/jtangelder/sass-loader), [less-loader](https://github.com/webpack/less-loader) or [stylus-loader](https://github.com/shama/stylus-loader).
 <br>It will auto handle properly after `sass/less/stylus` compilation but before the `css-loader`
 
+> Note: css files in `node_modules` will not be translated.
+
 **For example** the css below
 
 ``` css

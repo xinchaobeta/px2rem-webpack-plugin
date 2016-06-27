@@ -5,17 +5,19 @@ import path from 'path'
 import webpackConfig from './sample/webpack.config'
 import px2remWebpackPlugin from '../dist'
 
-const REGEX = /\/\*\*2w351r5q1rq2ekok\*\*\/([\s\S]*?)\/\*\*aiij34jri2rj24iji/
+const REGEX_CSS = /\/\*\*2w351r5q1rq2ekok\*\*\/([\s\S]*?)\/\*\*aiij34jri2rj24iji/
+const REGEX_CSS_IN_NODE_MODULES = /\/\*\*w3a9jaqj3irirn3\*\*\/([\s\S]*?)\/\*\*w3a9jaqj3irirn3/
 const distAppFile = path.resolve(__dirname, './sample/dist/app.js')
 
 describe('compile ./sample with my plugin', () => {
-  let cssSource
+  let cssSource, cssSourceInNodeModules
 
   before((done) => {
     webpack(webpackConfig, (err, stats) => {
       expect(err).toNotExist()
       const jsSource = fs.readFileSync(distAppFile, 'utf-8')
-      cssSource = jsSource.match(REGEX)[1]
+      cssSource = jsSource.match(REGEX_CSS)[1]
+      cssSourceInNodeModules = jsSource.match(REGEX_CSS_IN_NODE_MODULES)[1]
       done()
     })
   })
@@ -44,6 +46,10 @@ describe('compile ./sample with my plugin', () => {
     expect(cssSource).toMatch(/left:\s+1.3866666\d+rem;/)
   })
 
+  it('css file in node_modules should not be compiled', () => {
+    expect(cssSourceInNodeModules).toMatch(/height:\s*750px;/)
+  })
+
 })
 
 describe('compile ./sample with my plugin using option border', () => {
@@ -58,7 +64,7 @@ describe('compile ./sample with my plugin using option border', () => {
     webpack(webpackConfig, (err, stats) => {
       expect(err).toNotExist()
       const jsSource = fs.readFileSync(distAppFile, 'utf-8')
-      cssSource = jsSource.match(REGEX)[1]
+      cssSource = jsSource.match(REGEX_CSS)[1]
       done()
     })
   })
