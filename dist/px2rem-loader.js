@@ -29,7 +29,6 @@ var px2remByRule = function px2remByRule(rule) {
     var property = declaration.property;
     var value = declaration.value;
     var type = declaration.type;
-    var originScreenWidth = _option2.default.originScreenWidth;
     var border = _option2.default.border;
 
     switch (true) {
@@ -38,7 +37,7 @@ var px2remByRule = function px2remByRule(rule) {
         return;
       default:
         declaration.value = value.replace(REGEX, function (whole, px) {
-          return px / originScreenWidth * 3.2 + 'rem';
+          return px / 100 + 'rem';
         });
     }
   });

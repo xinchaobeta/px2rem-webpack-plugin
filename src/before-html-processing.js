@@ -3,13 +3,13 @@ import option from './option'
 const REGEX_SCRIPT = /(<head>[\s\S]*?)(<script\b[\s\S]*?<\/head>)/
 const REGEX_HEAD = /<\/head>/
 const REGEX_STYLE = /<head>/
-const script = `
+const script = (originScreenWidth) => `
   <script>
-  document.documentElement.style.fontSize = 100 * innerWidth / 320 + 'px'
+  document.documentElement.style.fontSize = 100 * innerWidth / ${originScreenWidth} + 'px'
   addEventListener('load', function() {
     setTimeout(function(){
-       document.documentElement.style.fontSize = 100 * innerWidth / 320 + 'px'
-       window.unit = 100 * innerWidth / 320;
+       document.documentElement.style.fontSize = 100 * innerWidth / ${originScreenWidth} + 'px'
+       window.unit = 100 * innerWidth / ${originScreenWidth};
        var e = document.createEvent('Event');
        e.initEvent('adjustReady', true, true);
        window.dispatchEvent(e);
@@ -17,14 +17,14 @@ const script = `
   })
   addEventListener('orientationchange', function() {
       setTimeout(function(){
-        document.documentElement.style.fontSize = 100 * innerWidth / 320 + 'px'
+        document.documentElement.style.fontSize = 100 * innerWidth / ${originScreenWidth} + 'px'
       }, 480)
 
   });
   </script>
 `
-const style = (originScreenWidth) => `
-  <style> body { font-size: ${16/originScreenWidth * 3.2}rem; } </style>
+const style = `
+  <style> body { font-size: .16rem; } </style>
 `
 
 const insertScript = (source, script) => {
@@ -49,7 +49,8 @@ const insertStyle = (source, style) => {
 }
 
 export default (htmlPluginData, next) => {
-  const html = insertScript(htmlPluginData.html, script)
-  htmlPluginData.html = insertStyle(html, style(option.originScreenWidth))
+  const {originScreenWidth} = option
+  const html = insertScript(htmlPluginData.html, script(originScreenWidth))
+  htmlPluginData.html = insertStyle(html, style)
   next();
 }
