@@ -10,7 +10,7 @@ build: clean
 	./node_modules/.bin/babel -d ./dist src
 
 debug:
-	iron-node ./node_modules/.bin/webpack --config ./test/sample/webpack.config.js
+	devtool ./node_modules/.bin/webpack --config ./test/sample/webpack.config.js
 
 test:
 	./node_modules/.bin/mocha --require babel-register ./test/index.js

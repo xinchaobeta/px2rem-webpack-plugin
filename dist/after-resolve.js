@@ -6,12 +6,13 @@ Object.defineProperty(exports, "__esModule", {
 
 var _lodash = require('lodash');
 
+var REGEX = /\/node_modules\/(?:[\.\w]+@)?css-loader\//;
 var px2remLoaderFile = require.resolve('./px2rem-loader');
 
 var handleLoaders = function handleLoaders(resource, loaders) {
   debugger;
   var idx = (0, _lodash.findIndex)(loaders, function (path) {
-    return path.includes('/node_modules/css-loader/');
+    return REGEX.test(path);
   });
   var isInNodeModules = resource.includes('/node_modules/');
   if (idx === -1 || isInNodeModules) return;
