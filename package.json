@@ -1,6 +1,6 @@
 {
   "name": "px2rem-webpack-plugin",
-  "version": "0.2.0-2",
+  "version": "0.2.0-3",
   "description": "make page to auto-fit responsive screen",
   "main": "./dist/index.js",
   "scripts": {
