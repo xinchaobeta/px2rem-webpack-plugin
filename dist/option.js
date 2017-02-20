@@ -5,9 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = {
   originScreenWidth: 750,
-  /**
-   * @desc in some older phones, border-width and border-radius must be integer
-   */
+
   border: 'preserve'
 };
 module.exports = exports['default'];

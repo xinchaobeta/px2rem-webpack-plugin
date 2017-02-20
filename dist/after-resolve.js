@@ -12,7 +12,7 @@ var px2remLoaderFile = require.resolve('./px2rem-loader');
 var handleLoaders = function handleLoaders(resource, loaders) {
   debugger;
   var idx = (0, _lodash.findIndex)(loaders, function (path) {
-    return REGEX.test(path);
+    return REGEX.test(path.replace(/\\/g, '/'));
   });
   var isInNodeModules = resource.includes('/node_modules/');
   if (idx === -1 || isInNodeModules) return;

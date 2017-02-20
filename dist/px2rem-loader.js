@@ -26,9 +26,9 @@ var REGEX = /(\d*?\.?\d+)\s*px\b/g;
 
 var px2remByRule = function px2remByRule(rule) {
   rule.declarations.forEach(function (declaration) {
-    var property = declaration.property;
-    var value = declaration.value;
-    var type = declaration.type;
+    var property = declaration.property,
+        value = declaration.value,
+        type = declaration.type;
     var border = _option2.default.border;
 
     switch (true) {
