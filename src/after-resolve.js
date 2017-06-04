@@ -4,7 +4,7 @@ const px2remLoaderFile = require.resolve('./px2rem-loader')
 
 const handleLoaders = (resource, loaders) => {
   debugger
-  const idx = findIndex(loaders, path => REGEX.test(path.replace(/\\/g, '/')))
+  const idx = findIndex(loaders, path => REGEX.test(path.loader.replace(/\\/g, '/')))
   const isInNodeModules = resource.includes('/node_modules/')
   if(idx === -1 || isInNodeModules) return;
   loaders.splice(idx + 1, 0, px2remLoaderFile)
