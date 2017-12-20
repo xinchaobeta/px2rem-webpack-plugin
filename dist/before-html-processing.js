@@ -13,10 +13,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var REGEX_SCRIPT = /(<head>[\s\S]*?)(<script\b[\s\S]*?<\/head>)/;
 var REGEX_HEAD = /<\/head>/;
 var REGEX_STYLE = /<head>/;
-var script = function script(originScreenWidth) {
-  return '\n  <script>\n  document.documentElement.style.fontSize = 100 * innerWidth / ' + originScreenWidth + ' + \'px\'\n  addEventListener(\'load\', function() {\n    setTimeout(function(){\n       document.documentElement.style.fontSize = 100 * innerWidth / ' + originScreenWidth + ' + \'px\'\n       window.unit = 100 * innerWidth / ' + originScreenWidth + ';\n       var e = document.createEvent(\'Event\');\n       e.initEvent(\'adjustReady\', true, true);\n       window.dispatchEvent(e);\n    }, 480);\n  })\n  addEventListener(\'orientationchange\', function() {\n      setTimeout(function(){\n        document.documentElement.style.fontSize = 100 * innerWidth / ' + originScreenWidth + ' + \'px\'\n      }, 480)\n\n  });\n  </script>\n';
+var script = function script(originScreenWidth, maxWidth) {
+  return '\n  <script>\n  document.documentElement.style.fontSize = 100 * (' + maxWidth + ' ? Math.min(' + maxWidth + ', innerWidth) : innerWidth) / ' + originScreenWidth + ' + \'px\'\n  addEventListener(\'load\', function() {\n    setTimeout(function(){\n       document.documentElement.style.fontSize = 100 * (' + maxWidth + ' ? Math.min(' + maxWidth + ', innerWidth) : innerWidth) / ' + originScreenWidth + ' + \'px\'\n       window.unit = 100 * (' + maxWidth + ' ? Math.min(' + maxWidth + ', innerWidth) : innerWidth) / ' + originScreenWidth + ';\n       var e = document.createEvent(\'Event\');\n       e.initEvent(\'adjustReady\', true, true);\n       window.dispatchEvent(e);\n    }, 480);\n  })\n  addEventListener(\'orientationchange\', function() {\n      setTimeout(function(){\n        document.documentElement.style.fontSize = 100 * (' + maxWidth + ' ? Math.min(' + maxWidth + ', innerWidth) : innerWidth) / ' + originScreenWidth + ' + \'px\'\n      }, 480)\n\n  });\n  </script>\n';
 };
-var style = '\n  <style> body { font-size: .16rem; } </style>\n';
+var style = function style(maxWidth) {
+  return maxWidth ? '\n  <style> body { font-size: .16rem; max-width: ' + maxWidth + 'px; margin: 0 auto; } </style>\n' : '\n  <style> body { font-size: .16rem; } </style>\n';
+};
 
 var insertScript = function insertScript(source, script) {
   switch (true) {
@@ -40,10 +42,11 @@ var insertStyle = function insertStyle(source, style) {
 };
 
 exports.default = function (htmlPluginData, next) {
-  var originScreenWidth = _option2.default.originScreenWidth;
+  var originScreenWidth = _option2.default.originScreenWidth,
+      maxWidth = _option2.default.maxWidth;
 
-  var html = insertScript(htmlPluginData.html, script(originScreenWidth));
-  htmlPluginData.html = insertStyle(html, style);
+  var html = insertScript(htmlPluginData.html, script(originScreenWidth, maxWidth));
+  htmlPluginData.html = insertStyle(html, style(maxWidth));
   next(null, htmlPluginData);
 };
 

@@ -1,6 +1,6 @@
 {
   "name": "px2rem-webpack-plugin",
-  "version": "0.2.0-5",
+  "version": "0.2.1",
   "description": "make page to auto-fit responsive screen",
   "main": "./dist/index.js",
   "scripts": {
@@ -27,7 +27,7 @@
     "webpack-dev-middleware": "^1.4.0",
     "webpack-hot-middleware": "^2.6.0"
   },
-  "author": "xinchaobeta",
+  "author": "sxcooler",
   "license": "ISC",
   "dependencies": {
     "css": "^2.2.1",
@@ -36,8 +36,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/xinchaobeta/px2rem-webpack-plugin.git"
+    "url": "https://github.com/sxcooler/px2rem-webpack-plugin.git"
   },
-  "bugs": "https://github.com/xinchaobeta/px2rem-webpack-plugin/issues",
-  "homepage": "https://github.com/xinchaobeta/px2rem-webpack-plugin"
+  "bugs": "https://github.com/sxcooler/px2rem-webpack-plugin/issues",
+  "homepage": "https://github.com/sxcooler/px2rem-webpack-plugin"
 }
