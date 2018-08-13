@@ -10,7 +10,6 @@ var REGEX = /\/node_modules\/(?:[\.\w]+@)?css-loader\//;
 var px2remLoaderFile = require.resolve('./px2rem-loader');
 
 var handleLoaders = function handleLoaders(resource, loaders) {
-  debugger;
   var idx = (0, _lodash.findIndex)(loaders, function (path) {
     return REGEX.test(path.loader.replace(/\\/g, '/'));
   });

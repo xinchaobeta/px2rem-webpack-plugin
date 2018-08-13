@@ -3,7 +3,6 @@ const REGEX = /\/node_modules\/(?:[\.\w]+@)?css-loader\//
 const px2remLoaderFile = require.resolve('./px2rem-loader')
 
 const handleLoaders = (resource, loaders) => {
-  debugger
   const idx = findIndex(loaders, path => REGEX.test(path.loader.replace(/\\/g, '/')))
   const isInNodeModules = resource.includes('/node_modules/')
   if(idx === -1 || isInNodeModules) return;

@@ -45,9 +45,9 @@ exports.default = function (htmlPluginData, next) {
   var originScreenWidth = _option2.default.originScreenWidth,
       maxWidth = _option2.default.maxWidth;
 
-  var html = insertScript(htmlPluginData.html, script(originScreenWidth, maxWidth));
-  htmlPluginData.html = insertStyle(html, style(maxWidth));
-  next(null, htmlPluginData);
+  var html = insertScript(htmlPluginData.html, script(originScreenWidth));
+  htmlPluginData.html = insertStyle(html, style);
+  return next ? next(null, htmlPluginData) : htmlPluginData;
 };
 
 module.exports = exports['default'];
