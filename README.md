@@ -21,7 +21,7 @@ var webpackConfig = {
   },
   plugins: [
     new HtmlWebpackPlugin(),
-    new Px2remWebpackPlugin({originScreenWidth: 750}),
+    new Px2remWebpackPlugin({originScreenWidth: 750, maxWidth: 750}),
   ]
 };
 ```

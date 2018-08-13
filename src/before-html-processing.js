@@ -3,13 +3,13 @@ import option from './option'
 const REGEX_SCRIPT = /(<head>[\s\S]*?)(<script\b[\s\S]*?<\/head>)/
 const REGEX_HEAD = /<\/head>/
 const REGEX_STYLE = /<head>/
-const script = (originScreenWidth) => `
+const script = (originScreenWidth, maxWidth) => `
   <script>
-  document.documentElement.style.fontSize = 100 * innerWidth / ${originScreenWidth} + 'px'
+  document.documentElement.style.fontSize = 100 * (${maxWidth} ? Math.min(${maxWidth}, innerWidth) : innerWidth) / ${originScreenWidth} + 'px'
   addEventListener('load', function() {
     setTimeout(function(){
-       document.documentElement.style.fontSize = 100 * innerWidth / ${originScreenWidth} + 'px'
-       window.unit = 100 * innerWidth / ${originScreenWidth};
+       document.documentElement.style.fontSize = 100 * (${maxWidth} ? Math.min(${maxWidth}, innerWidth) : innerWidth) / ${originScreenWidth} + 'px'
+       window.unit = 100 * (${maxWidth} ? Math.min(${maxWidth}, innerWidth) : innerWidth) / ${originScreenWidth};
        var e = document.createEvent('Event');
        e.initEvent('adjustReady', true, true);
        window.dispatchEvent(e);
@@ -17,18 +17,20 @@ const script = (originScreenWidth) => `
   })
   addEventListener('orientationchange', function() {
       setTimeout(function(){
-        document.documentElement.style.fontSize = 100 * innerWidth / ${originScreenWidth} + 'px'
+        document.documentElement.style.fontSize = 100 * (${maxWidth} ? Math.min(${maxWidth}, innerWidth) : innerWidth) / ${originScreenWidth} + 'px'
       }, 480)
 
   });
   </script>
 `
-const style = `
+const style = (maxWidth) => maxWidth ? `
+  <style> body { font-size: .16rem; max-width: ${maxWidth}px; margin: 0 auto; } </style>
+` : `
   <style> body { font-size: .16rem; } </style>
 `
 
 const insertScript = (source, script) => {
-  switch(true) {
+  switch (true) {
     case REGEX_SCRIPT.test(source):
       return source.replace(REGEX_SCRIPT, (whole, before, after) => {
         return before + script + after
@@ -41,7 +43,7 @@ const insertScript = (source, script) => {
 }
 
 const insertStyle = (source, style) => {
-  if(REGEX_STYLE.test(source)) {
+  if (REGEX_STYLE.test(source)) {
     return source.replace(REGEX_STYLE, '<head>' + style)
   } else {
     return style + source
