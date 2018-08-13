@@ -43,10 +43,11 @@ var insertStyle = function insertStyle(source, style) {
 
 exports.default = function (htmlPluginData, next) {
   var originScreenWidth = _option2.default.originScreenWidth,
-      maxWidth = _option2.default.maxWidth;
+      _option$maxWidth = _option2.default.maxWidth,
+      maxWidth = _option$maxWidth === undefined ? originScreenWidth : _option$maxWidth;
 
-  var html = insertScript(htmlPluginData.html, script(originScreenWidth));
-  htmlPluginData.html = insertStyle(html, style);
+  var html = insertScript(htmlPluginData.html, script(originScreenWidth, maxWidth));
+  htmlPluginData.html = insertStyle(html, style(maxWidth));
   return next ? next(null, htmlPluginData) : htmlPluginData;
 };
 
