@@ -44,7 +44,7 @@ exports.default = function (htmlPluginData, next) {
 
   var html = insertScript(htmlPluginData.html, script(originScreenWidth));
   htmlPluginData.html = insertStyle(html, style);
-  next(null, htmlPluginData);
+  return next ? next(null, htmlPluginData) : htmlPluginData;
 };
 
 module.exports = exports['default'];
