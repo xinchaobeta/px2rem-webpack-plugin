@@ -19,7 +19,9 @@ const script = (originScreenWidth, maxWidth) => `
       setTimeout(function(){
         document.documentElement.style.fontSize = 100 * (${maxWidth} ? Math.min(${maxWidth}, innerWidth) : innerWidth) / ${originScreenWidth} + 'px'
       }, 480)
-
+  });
+  addEventListener('resize', function() {
+    document.documentElement.style.fontSize = 100 * (${maxWidth} ? Math.min(${maxWidth}, innerWidth) : innerWidth) / ${originScreenWidth} + 'px'
   });
   </script>
 `
