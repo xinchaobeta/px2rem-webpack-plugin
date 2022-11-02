@@ -21,7 +21,7 @@
     "eslint-plugin-import": "^1.0.3",
     "expect": "^1.16.0",
     "html-webpack-plugin": "^2.15.0",
-    "mocha": "^2.4.5",
+    "mocha": "^10.1.0",
     "style-loader": "^0.13.1",
     "webpack": "^1.12.2",
     "webpack-dev-middleware": "^1.4.0",
